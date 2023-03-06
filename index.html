@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>15 puzzle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <script src="sliding.js"></script>
+  <style>
+    body {
+      background-image: url(https://i.imgur.com/cYpZTXG.png);
+    }
+    #img2 {
+      border-radius: 50%;
+      background-color: #B8B08D !important;
+      height: 30px;
+      width: 30px;
+    }
+    .text-light {
+      color: transparent !important;
+    }
+    .btn-primary {
+      border-width: 4px;
+      border-color: #f29559 !important;
+      border-radius: 30px;
+      background-color: #F2D492 !important;
+      font-family: 'Quicksand', sans-serif;
+      color: #283845 !important;
+      font-size: 35px;
+    }
+    .btn-nanasaside {
+      border-width: 4px;
+      border-color: #f29559 !important;
+      border-radius: 20px;
+      background-color: #F2D492 !important;
+      font-family: 'Quicksand', sans-serif;
+      color: #283845 !important;
+      font-size: 20px;
+      width: 100px;
+      height: 50px;
+    }
+    .btn-nanasailalim {
+      border-width: 4px;
+      border-color: #f29559 !important;
+      border-radius: 20px;
+      background-color: #F2D492 !important;
+      font-family: 'Quicksand', sans-serif;
+      color: #283845 !important;
+      font-size: 20px;
+      width: 205px;
+      height: 50px;
+    }
+
+
+
+ #board {
+        width: 612px;
+        height: 612px;
+        background-color: #F2D492 ;
+        border: 10px solid #f29559;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 20px;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    
+    #board img {
+        width: 148px;
+        height: 148px;
+        
+    }
+    
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+      <a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <span class="text-light">help me pls</span>
+      </a>
+      <span class="text-light">big slay</span>
+      <div class="col-md-3 text-end"> 
+        <span class="text-light">mega slay</span>
+      </div>
+  </header>
+</div>
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col-sm-4">
+      <span class="text-light">naurururu</span>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-primary">15 PUZZLE</button>
+    </div>
+    <div class="col col-sm-4">
+      <span class="text-light">iyak na q</span>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-3">
+      <span class="text-light">help</span>
+    </div>
+    <div class="col-sm-6 main-content">
+      <span class="text-light">ahshdfhfj</span>
+    </div>
+    <div class="col-sm-3">
+      <span class="text-light">help</span>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-2">
+      <span class="text-light">
+
+      </span>
+    </div>
+    <div class="col-sm-3">
+      <p>
+        <button type="button" class="btn btn-nanasaside">Moves</button><span class="text-light">,,</span><button type="button" class="btn btn-nanasaside">0</button>
+      </p>
+      <p>
+        <button type="button" class="btn btn-nanasaside">Timer</button><span class="text-light">,,</span><button type="button" class="btn btn-nanasaside">00:00</button>
+      </p>
+      <p>
+        <button type="button" class="btn btn-nanasailalim">Start</button>
+      </p>
+      <p>
+        <button type="button" class="btn btn-nanasailalim" >Pause</button>
+      </p>
+      <p>
+        <button type="button" class="btn btn-nanasailalim" onclick="myFunction()">Reset</button>
+      </p>
+    </div>
+     <div class="col-sm-5 nasa-loob" id="board">
+      <script>
+        var rows = 4;
+var columns = 4;
+
+var currTile;
+var otherTile;
+
+var turns = 0;
+
+
+var imgOrder  = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"];
+
+window.onload = function() {
+for (let r=0; r < rows; r++) {
+    for (let c=0; c < columns; c++) {
+
+
+        let tile = document.createElement("img");
+        tile.id = r.toString() + "-" + c.toString();
+        tile.src = imgOrder.shift() + ".jpg";
+
+      
+        tile.addEventListener("dragstart", dragStart);  
+        tile.addEventListener("dragover", dragOver);   
+        tile.addEventListener("dragenter", dragEnter); 
+        tile.addEventListener("dragleave", dragLeave);  
+        tile.addEventListener("drop", dragDrop);        
+        tile.addEventListener("dragend", dragEnd);      
+
+        document.getElementById("board").append(tile);
+
+    }
+}
+}
+
+function dragStart() {
+currTile = this; 
+}
+
+function dragOver(e) {
+e.preventDefault();
+}
+
+function dragEnter(e) {
+e.preventDefault();
+}
+
+function dragLeave() {
+
+}
+
+function dragDrop() {
+otherTile = this; 
+}
+
+function dragEnd() {
+if (!otherTile.src.includes("16.jpg")) {
+    return;
+}
+
+let currCoords = currTile.id.split("-");
+let r = parseInt(currCoords[0]);
+let c = parseInt(currCoords[1]);
+
+let otherCoords = otherTile.id.split("-");
+let r2 = parseInt(otherCoords[0]);
+let c2 = parseInt(otherCoords[1]);
+
+let moveLeft = r == r2 && c2 == c-1;
+let moveRight = r == r2 && c2 == c+1;
+
+let moveUp = c == c2 && r2 == r-1;
+let moveDown = c == c2 && r2 == r+1;
+
+let isAdjacent = moveLeft || moveRight || moveUp || moveDown;
+
+if (isAdjacent) {
+    let currImg = currTile.src;
+    let otherImg = otherTile.src;
+
+    currTile.src = otherImg;
+    otherTile.src = currImg;
+
+    turns += 1;
+    document.getElementById("turns").innerText = turns;
+}
+
+
+}
+
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+
+  while (currentIndex != 0) {
+
+ 
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+  
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+var arr = [2, 11, 37, 42];
+shuffle(arr);
+console.log(arr);
+
+    </script>
+
+      </div>
+    <div class="col-sm-4">
+      <span class="text-light">lolololol</span>
+    </div>
+  </div>
+  
+    
+</div>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <img id="img2" class="bi me-2" src="https://i.imgur.com/bgTzUdN.png">
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2023 PSHS-CLC</span>
+    </div>
+    <span class="mb-3 mb-md-0 text-muted">Capule, Mancao, Rosales 9-Balingkilat</span>
+  </footer>
+</div>
+</body>
+</html>
+
+
+
