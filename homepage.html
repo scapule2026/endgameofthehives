@@ -214,7 +214,7 @@
         <div class="col-sm-8 container-fluid">
             <br>
             <div class="card time-design col-sm-2"  style="display: inline-block; margin-right:10px;">
-                <p style="margin-top:15px;">Timer: <b id="countdown">99</b></p>
+                <p style="margin-top:15px;">Timer: <b id="countdown">60</b></p>
             </div>
             <div class="col-sm-2" style="display: inline-block; margin-left:10px; margin-right:10px;">
                 <p> <button type="button" class="btn btn-nanasailalim" id="gameStart" onclick="myFunction()">Start</button> </p>
@@ -333,7 +333,7 @@
                          audio.pause();
                          window.audio = new Audio('win.mp3'); 
                          audio.play();
-                       document.getElementById("countdown").innerHTML = "99";
+                       document.getElementById("countdown").innerHTML = "60";
                       
                
                          
@@ -377,7 +377,7 @@
                          
                        document.getElementById("gameStart").disabled = true;
                        document.getElementById("gameStop").disabled = false;
-                         var timeleft = 99;
+                         var timeleft = 60;
                      
                          window.downloadTimer = setInterval(function function1(){
                          document.getElementById("countdown").innerHTML = timeleft;
@@ -406,7 +406,7 @@
                     document.getElementById("turns").innerHTML = 0;
                        document.getElementById("gameStart").disabled = false;
                        document.getElementById("gameStop").disabled = true;
-                       document.getElementById("countdown").innerHTML = "99";
+                       document.getElementById("countdown").innerHTML = "60";
                        clearInterval(downloadTimer);
                        
                        
