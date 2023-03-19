@@ -369,10 +369,14 @@
                  
                  location.reload();
                }
-               
+               function myFunction3(){
+                  window.audio = new Audio('click.mp3'); 
+                         audio.play();
+               }
                
                      document.getElementById("gameStart").addEventListener("click", function(){
-               
+                window.audio = new Audio('click.mp3'); 
+                         audio.play();
                          
                        document.getElementById("gameStart").disabled = true;
                        document.getElementById("gameStop").disabled = false;
@@ -401,7 +405,8 @@
                          document.getElementById("gameStop").addEventListener("click", function(){
                            audio.pause();
                           
-                           
+                            window.audio = new Audio('click.mp3'); 
+                         audio.play();
                     document.getElementById("turns").innerHTML = 0;
                        document.getElementById("gameStart").disabled = false;
                        document.getElementById("gameStop").disabled = true;
@@ -424,7 +429,7 @@
 
 
     <br>
-    <a href="index.html" class="btn btn-nanasailalim">Go Back</a> <br>
+    <a href="index.html" class="btn btn-nanasailalim" onclick = "myFunction3()">Go Back</a> <br>
     
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
